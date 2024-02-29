@@ -50,11 +50,10 @@ Name:VIDHYASRI.K
 Register Number: 212222230170
 
 ## DEPENDENCIES
-
+```
 import numpy as np
 
 import pandas as pd
-
 
 from sklearn.model_selection import train_test_split
 
@@ -63,52 +62,59 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 
 from tensorflow.keras.layers import Dense
-
+```
 ## DATA from google.colab import auth
-
+```
 import gspread
 
 from google.auth import default
 
 import pandas as pd
-
-
+```
+```
 auth.authenticate_user()
 
 creds, _ = default()
 
 gc = gspread.authorize(creds)
-
+```
+```
 worksheet = gc.open('DL').sheet1
-
+```
+```
 rows = worksheet.get_all_values()
-
+```
 ## DATA PROCESSING
-
+```
 df = pd.DataFrame(rows[1:], columns=rows[0])
 
 df.head()
-
+```
+```
 df['Input']=pd.to_numeric(df['Input'])
 
 df['Output']=pd.to_numeric(df['Output'])
-
+```
+```
 X = df[['Input']].values
 
 y = df[['Output']].values
-
+```
+```
 x_train,x_test,y_train,y_test = train_test_split(X,y,test_size = 0.33,random_state = 33)
-
+```
+```
 Scaler = MinMaxScaler()
 
 Scaler.fit(x_train)
-
+```
+```
 x_train.shape
 
 x_train1 = Scaler.transform(x_train)
 
 x_train1.shape
-
+```
 ## MODEL ARCHITECTURE AND TRAINING
 
 model = Sequential([
@@ -117,31 +123,32 @@ model = Sequential([
     Dense(units = 2, activation = 'relu'),
     Dense(units = 1)
 ])
-
+```
 model.compile(optimizer='rmsprop', loss = 'mae')
 
 model.fit(x_train1,y_train,epochs = 2000)
 
 model.summary()
-
+```
 ## LOSS CALCULATION
-
+```
 loss_df = pd.DataFrame(model.history.history)
 
 loss_df.plot()
-
+```
 ## PREDICTION
-
+```
 x_test1 = Scaler.transform(x_test)
 
 model.evaluate(x_test1,y_test)
-
+```
+```
 x_n = [[21]]
 
 x_n1 = Scaler.transform(x_n)
 
 model.predict(x_n1)
-
+```
 ## DATASET INFORMATION
 
 ![image](https://github.com/vidhyasrikachapalayam/basic-nn-model/assets/119477817/a350d6f9-1f94-4cf1-b817-186cea31acef)
