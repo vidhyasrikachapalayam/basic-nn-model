@@ -7,11 +7,14 @@ To develop a neural network regression model for the given dataset.
 
 ## THEORY
 
-Explain the problem statement
+A neural network can be used to solve a problem by Data collection and Preprocessing,choosing a appropriate neural network architecture ,Train the neural network using the collected and preprocessed data,Assess the performance of the trained model using evaluation metrics,Depending on the performance of the model, you might need to fine-tune hyperparameters or adjust the architecture to achieve better results,Once you're satisfied with the model's performance, you can deploy it to production where it can be used to make predictions on new, unseen data
+
+For the problem statement we have dealt with , we have developed a neural network with three hidden layers. First hidden layer consists of 4 neurons ,second hidden layer with 8 neurons , third layer with 5 neurons . The input and output layer contain 1 neuron . The Activation Function used is 'relu'.
 
 ## Neural Network Model
 
-Include the neural network model diagram.
+![image](https://github.com/vidhyasrikachapalayam/basic-nn-model/assets/119477817/8945cdaa-0cf7-4fea-bdeb-4191c9ae4f6e)
+
 
 ## DESIGN STEPS
 
